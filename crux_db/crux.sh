@@ -166,6 +166,7 @@ source $DB/scripts/crux_config.sh
 ${MODULE_SOURCE}
 ${QIIME}
 ${BOWTIE2}
+${PYTHON27}
 ${ATS} #load ATS, Hoffman2 specific module for managing submitted jobs.
 
 
