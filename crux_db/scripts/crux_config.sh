@@ -37,6 +37,9 @@ BOWTIE2="module load bowtie2"							#or what ever code is used to load bowtie2 i
 #load ATS
 ATS="module load ATS"									#or what ever code is used to load ATS in a bash shell, or path to ATS.  ATS is a Hoffman2 module that allows the user to submit a job on the HPC from within a shell script
 
+# load python 2.7 
+PYTHON27="module load python/2.7.13" # load python module 2.7
+
 
 ###########################
 # Paths to reference databases
