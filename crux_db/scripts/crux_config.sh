@@ -29,6 +29,7 @@ BLASTn_CMD="${DB}/ncbi-blast-2.6.0+/bin/blastn" 			#either the path to the blast
 
 
 #Load / run Qiime
+# this will already load the python/2.7.3 version
 QIIME="module load qiime" 								#or what ever code is used to load qiime in a bash shell (e.g. on a mac it might be "macqiime")
 
 #load bowtie2
@@ -37,6 +38,8 @@ BOWTIE2="module load bowtie2"							#or what ever code is used to load bowtie2 i
 #load ATS
 ATS="module load ATS"									#or what ever code is used to load ATS in a bash shell, or path to ATS.  ATS is a Hoffman2 module that allows the user to submit a job on the HPC from within a shell script
 
+# load python 2.7.3 for other projects
+PYTHON27="module load python/2.7.3"
 
 ###########################
 # Paths to reference databases

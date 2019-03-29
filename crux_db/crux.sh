@@ -279,9 +279,9 @@ then
     file_count=$( shopt -s nullglob ; set -- ${ODIR}/${NAME}_ecoPCR/cleaned/${j}/blast_ready_* ; echo $#)
     # submit blast jobs for each file, and then remove reads with duplicate accession version numbers
     array_var="\$SGE_TASK_ID"
-    printf "${BLAST1_HEADER}\n#$ -t 1-${file_count}\n\n\n/bin/bash ${DB}/scripts/sub_blast1.sh -n ${NAME} -q ${nam1}_${array_var} -o ${ODIR} -k ${j} -l blast_ready_${array_var} -d ${DB} -v ${EVAL1:=$BLAST1_eVALUE} -t ${THREAD1:=$BLAST1_NUM_THREADS} -i ${ID1:=$BLAST1_PERC_IDENTITY} -c ${COV1:=$BLAST1_HSP_PERC} -a ${RETURN:=$BLAST1_NUM_ALIGNMENTS} -y ${GO:=$GAP_OPEN} -z ${GE:=$GAP_EXTEND}\n" > ${ODIR}/Run_info/blast_jobs/blast1_${j}.sh
+    printf "${BLAST1_HEADER}\n#$ -t 1-${file_count}\n\n\n${MODULE_SOURCE}\n${PYTHON27}\n/bin/bash ${DB}/scripts/sub_blast1.sh -n ${NAME} -q ${nam1}_${array_var} -o ${ODIR} -k ${j} -l blast_ready_${array_var} -d ${DB} -v ${EVAL1:=$BLAST1_eVALUE} -t ${THREAD1:=$BLAST1_NUM_THREADS} -i ${ID1:=$BLAST1_PERC_IDENTITY} -c ${COV1:=$BLAST1_HSP_PERC} -a ${RETURN:=$BLAST1_NUM_ALIGNMENTS} -y ${GO:=$GAP_OPEN} -z ${GE:=$GAP_EXTEND}\n" > ${ODIR}/Run_info/blast_jobs/blast1_${j}.sh
     ${QUEUESUBMIT} ${ODIR}/Run_info/blast_jobs/blast1_${j}.sh
-    printf "${BLAST2_HEADER}\n#$ -t 1-${file_count}\n\n\n/bin/bash ${DB}/scripts/sub_blast2.sh -n ${NAME} -q ${nam1}_${array_var} -o ${ODIR} -k ${j} -l blast_ready_${array_var} -d ${DB} -w ${EVAL2:=$BLAST2_eVALUE} -j ${THREAD2:=$BLAST2_NUM_THREADS} -p ${ID2:=$BLAST2_PERC_IDENTITY} -x ${COV2:=$BLAST2_HSP_PERC} -a ${RETURN:=$BLAST2_NUM_ALIGNMENTS} -y ${GO:=$GAP_OPEN} -z ${GE:=$GAP_EXTEND}\n" > ${ODIR}/Run_info/blast_jobs/blast2_${j}.sh
+    printf "${BLAST2_HEADER}\n#$ -t 1-${file_count}\n\n\n${MODULE_SOURCE}\n${PYTHON27}\n/bin/bash ${DB}/scripts/sub_blast2.sh -n ${NAME} -q ${nam1}_${array_var} -o ${ODIR} -k ${j} -l blast_ready_${array_var} -d ${DB} -w ${EVAL2:=$BLAST2_eVALUE} -j ${THREAD2:=$BLAST2_NUM_THREADS} -p ${ID2:=$BLAST2_PERC_IDENTITY} -x ${COV2:=$BLAST2_HSP_PERC} -a ${RETURN:=$BLAST2_NUM_ALIGNMENTS} -y ${GO:=$GAP_OPEN} -z ${GE:=$GAP_EXTEND}\n" > ${ODIR}/Run_info/blast_jobs/blast2_${j}.sh
     ${QUEUESUBMIT} ${ODIR}/Run_info/blast_jobs/blast2_${j}.sh
   else
     echo " "
